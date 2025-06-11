@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メモアプリ</title>
+</head>
+<body>
+    <h1>メモアプリ</h1>
+    <h2>メモ一覧</h2>
+    {% for book in books %}
+    <p>タイトル: {{ book.title}} </p>
+    <p>金額: {{ book.price}}円  </p>
+    <p>入荷日:  {{ book.arrival_day}}  </p>
+    {% endfor %}
+    <a href="{{ url_for('search_results') }}">編集</a>
+</body>
+</html>
