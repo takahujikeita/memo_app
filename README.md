@@ -17,32 +17,22 @@ git clone [このリポジトリのURL]
 
 
 ```
-#仮想環境を作成
-python -m venv venv
+#macの場合(ターミナル)
+export FLASK_APP=flaskr
+export FLASK_ENV=development
 
-#仮想環境を有効化 (macOS/Linux)
-source venv/bin/activate
+#windows(CMD)
+set FLASK_APP=flaskr
+set FLASK_ENV=development
 
-#仮想環境を有効化 (Windows)
-.\venv\Scripts\activate
-```
-
-
-3.依存ライブラリのインストール
-
-```
-pip install -r requirements.txt
-```
-
-4.データベースの初期化
-以下のコマンドを実行して、メモを保存するためのデータベースファイル(database.db)を作成します。
+#windows(Powershell)
+$env:FLASK_APP="flaskr"
+$env:FLASK_ENV="development"
 
 ```
-python db.py
-```
 
 
-5.アプリケーションの起動
+3.アプリケーションの起動
 以下のコマンドで開発サーバーを起動します。
 
 
