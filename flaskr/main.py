@@ -4,8 +4,6 @@ import sqlite3
 
 DATABASE = 'database.db'
 
-
-
 # db接続
 def get_db_connection():
     connection=sqlite3.connect(DATABASE)
@@ -13,7 +11,7 @@ def get_db_connection():
     return connection
 
 
-# カテゴリ分類
+# カテゴリ分類→ここの拡張性と保守性についてもっとブラッシュアップする必要あり
 def classify_category(content):
     # メモの内容からカテゴリを自動で分類する
     # switch文にする
@@ -59,6 +57,7 @@ def register():
 
     return redirect(url_for('index'))
 
+# search関数の中をcontrollerでわけると保守性がます（laravelのディレクトリ分けみたいなやつ）
 @app.route('/search')
 def search():
     # 検索機能
@@ -74,6 +73,7 @@ def search():
     where_clauses = []
     params = []
 
+# 関数にしてあげたほうがいい
     if search_category:
         where_clauses.append("category = ?")
         params.append(search_category)
@@ -85,6 +85,7 @@ def search():
         where_clauses.append("DATE(created_at) = ?")
         params.append(search_date)
 
+# ここも関数にしてあげた方がいい
     # where句が存在する場合、SQL文に追加
     if where_clauses:
         sql +=" where " + " and ".join(where_clauses)
